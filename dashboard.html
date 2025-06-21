@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SALUS - Centro de Rehabilitación Física</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("3RmOxU8q22p_-fHhj"); // Tu User ID de EmailJS
+      })();
+    </script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <span>Centro SALUS</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="btn-inicio" class="active"><i class='bx bx-home'></i> Inicio</a></li>
+                <li><a href="#" id="btn-cita"><i class='bx bx-calendar-plus'></i> Programar Cita</a></li>
+                <li><a href="#" id="btn-equipos"><i class='bx bx-store'></i> Tienda</a></li>
+                <li><a href="index.html"><i class='bx bx-log-out'></i> Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <section id="seccion-inicio" class="section visible">
+            <h1 class="bienvenida">Bienvenido(a) a SALUS</h1>
+            <div class="imagen-grande">
+                <img src="SalusPortada.jpg" alt="Logo SALUS">
+            </div>
+        </section>
+
+        <!-- Sección: Programar Cita -->
+        <section id="seccion-cita" class="section">
+            <h2>Programar Cita Médica</h2>
+            <form id="formulario-cita" class="form-card">
+                <div class="form-group">
+                    <label for="nombreCita">Nombre Completo</label>
+                    <input type="text" id="nombreCita" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="correoCita">Correo electrónico</label>
+                    <input type="email" id="correoCita" name="email" required placeholder="Tu correo">
+                </div>
+                <div class="form-group">
+                    <label for="fechaCita">Fecha de la cita</label>
+                    <input type="date" id="fechaCita" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="motivo">Motivo de la cita</label>
+                    <textarea id="motivo" name="motivo" rows="2"></textarea>
+                </div>
+                <button type="submit">Programar Cita</button>
+                <p id="msgCita" class="mensaje"></p>
+            </form>
+        </section>
+
+        <!-- Sección: Tienda -->
+        <section id="seccion-equipos" class="section">
+            <h2>Tienda de Equipos Ortopédicos</h2>
+            <div class="equipos-grid">
+                <!-- Plantilla para tus productos -->
+                <div class="equipo-card">
+                    <img src="img/andador.jpg" alt="Andador Ortopédico">
+                    <h3>Andador Ortopédico</h3>
+                    <p>Ideal para pacientes en rehabilitación, resistente y ajustable.</p>
+                    <button>Solicitar información</button>
+                </div>
+                <div class="equipo-card">
+                    <img src="img/silla-ruedas.jpg" alt="Silla de ruedas">
+                    <h3>Silla de Ruedas</h3>
+                    <p>Ligera, plegable y segura para movilidad diaria.</p>
+                    <button>Solicitar información</button>
+                </div>
+                <div class="equipo-card empty-card">
+                    <span>Aquí puedes poner más productos con imagen y descripción.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- EmailJS Script para enviar la cita médica -->
+    <script type="text/javascript">
+        document.getElementById('formulario-cita').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_tdwp85y', 'template_myhunve', this)
+            .then(function() {
+                document.getElementById('msgCita').textContent =
+                  '¡Correo enviado con éxito! Revisa tu bandeja de entrada o la carpeta de spam.';
+                document.getElementById('msgCita').style.color = 'green';
+                document.getElementById('formulario-cita').reset();
+            }, function(error) {
+                document.getElementById('msgCita').textContent =
+                  'Ocurrió un error al enviar el correo: ' + JSON.stringify(error);
+                document.getElementById('msgCita').style.color = 'red';
+            });
+        });
+    </script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
