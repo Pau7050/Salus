@@ -1,2 +1,0 @@
-# Salus
-for proyect
