@@ -2,436 +2,106 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>SALUS - Centro de Rehabilitación Física</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Becas de Medicina - San Martín de Porres</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            padding: 40px 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        
-        .medical-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-        
-        .card h2 {
-            color: #4a5568;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-        
-        .requirements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .requirement-item {
-            background: #f7fafc;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.2s ease;
-        }
-        
-        .requirement-item:hover {
-            transform: translateX(5px);
-        }
-        
-        .requirement-item h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .benefit-item {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .benefit-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .benefit-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .cta-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
-        }
-        
-        .application-form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #4a5568;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .contact-info {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .contact-info h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-        
-        .contact-item {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .contact-item span {
-            font-size: 1.2rem;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .container {
-                padding: 10px;
-            }
-            
-            .requirements-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .benefits {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("3RmOxU8q22p_-fHhj"); // Tu User ID de EmailJS
+      })();
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="medical-icon">🩺</div>
-            <h1>Becas de Medicina</h1>
-            <p class="subtitle">Oportunidad para jóvenes de San Martín de Porres</p>
-            <p>Cumple tu sueño de convertirte en médico</p>
+    <aside class="sidebar">
+        <div class="logo">
+            <span>Centro SALUS</span>
         </div>
-        
-        <div class="card">
-            <h2>📋 Requisitos para Aplicar</h2>
-            <div class="requirements-grid">
-                <div class="requirement-item">
-                    <h3>🏠 Residencia</h3>
-                    <p>Ser residente del Departamento de San Martín de Porres con al menos 2 años de antigüedad comprobada.</p>
-                </div>
-                <div class="requirement-item">
-                    <h3>🎓 Académico</h3>
-                    <p>Haber culminado la educación secundaria con promedio mínimo de 16 puntos en los últimos dos años.</p>
-                </div>
-                <div class="requirement-item">
-                    <h3>👥 Edad</h3>
-                    <p>Tener entre 17 y 22 años al momento de la postulación.</p>
-                </div>
-                <div class="requirement-item">
-                <div class="requirement-item">
-                    <h3>🏥 Compromiso</h3>
-                    <p>Firmar compromiso de servicio comunitario en centros de salud del distrito por 5 años después de graduarse.</p>
-                </div>
-                <div class="requirement-item">
+        <nav>
+            <ul>
+                <li><a href="#" id="btn-inicio" class="active"><i class='bx bx-home'></i> Inicio</a></li>
+                <li><a href="#" id="btn-cita"><i class='bx bx-calendar-plus'></i> Programar Cita</a></li>
+                <li><a href="#" id="btn-equipos"><i class='bx bx-store'></i> Tienda</a></li>
+                <li><a href="index.html"><i class='bx bx-log-out'></i> Cerrar Sesión</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <section id="seccion-inicio" class="section visible">
+            <h1 class="bienvenida">Bienvenido(a) a SALUS</h1>
+            <div class="imagen-grande">
+                <img src="SalusPortada.jpg" alt="Logo SALUS">
             </div>
-        </div>
-        
-        <div class="card">
-            <h2>🎁 Beneficios de la Beca</h2>
-            <div class="benefits">
-                <div class="benefit-item">
-                    <div class="icon">💳</div>
-                    <h3>Matrícula Completa</h3>
-                    <p>Cobertura total de matrícula y pensiones durante toda la carrera</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="icon">📚</div>
-                    <h3>Material de Estudio</h3>
-                    <p>Libros, uniformes y materiales médicos necesarios</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="icon">🍽️</div>
-                    <h3>Alimentación</h3>
-                    <p>Bono mensual de S/. 400 para alimentación</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="icon">🏥</div>
-                    <h3>Prácticas Garantizadas</h3>
-                    <p>Prácticas pre-profesionales en hospitales de prestigio</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="icon">👨‍⚕️</div>
-                    <h3>Mentoría</h3>
-                    <p>Acompañamiento de médicos especialistas durante la carrera</p>
-                </div>
-                <div class="benefit-item">
-                    <div class="icon">🎯</div>
-                    <h3>Inserción Laboral</h3>
-                    <p>Oportunidad de trabajo en el sistema de salud local</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>📅 Cronograma de Postulación 2025</h2>
-            <div class="requirements-grid">
-                <div class="requirement-item">
-                    <h3>📝 Inscripciones</h3>
-                    <p><strong>15 de julio - 30 de agosto</strong><br>
-                    Presentación de documentos y formulario de postulación</p>
-                </div>
-                <div class="requirement-item">
-                    <h3>📖 Examen de Admisión</h3>
-                    <p><strong>15 de septiembre</strong><br>
-                    Evaluación en conocimientos de ciencias y aptitud académica</p>
-                </div>
-                <div class="requirement-item">
-                    <h3>🗣️ Entrevistas</h3>
-                    <p><strong>25-30 de septiembre</strong><br>
-                    Evaluación personal y motivacional</p>
-                </div>
-                <div class="requirement-item">
-                    <h3>🏆 Resultados</h3>
-                    <p><strong>10 de octubre</strong><br>
-                    Publicación de beneficiarios seleccionados</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="application-form">
-            <h2>📋 Formulario de Pre-Inscripción</h2>
-            <form id="applicationForm">
+        </section>
+
+        <!-- Sección: Programar Cita -->
+        <section id="seccion-cita" class="section">
+            <h2>Programar Cita Médica</h2>
+            <form id="formulario-cita" class="form-card">
                 <div class="form-group">
-                    <label for="nombre">Nombres y Apellidos *</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="nombreCita">Nombre Completo</label>
+                    <input type="text" id="nombreCita" name="nombre" required placeholder="Tu nombre">
                 </div>
-                
                 <div class="form-group">
-                    <label for="dni">DNI *</label>
-                    <input type="text" id="dni" name="dni" required>
+                    <label for="correoCita">Correo electrónico</label>
+                    <input type="email" id="correoCita" name="email" required placeholder="Tu correo">
                 </div>
-                
                 <div class="form-group">
-                    <label for="fecha_nacimiento">Fecha de Nacimiento *</label>
-                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                    <label for="fechaCita">Fecha de la cita</label>
+                    <input type="date" id="fechaCita" name="fecha" required>
                 </div>
-                
                 <div class="form-group">
-                    <label for="direccion">Dirección en San Martín de Porres *</label>
-                    <input type="text" id="direccion" name="direccion" required>
+                    <label for="motivo">Motivo de la cita</label>
+                    <textarea id="motivo" name="motivo" rows="2"></textarea>
                 </div>
-                
-                <div class="form-group">
-                    <label for="telefono">Teléfono/Celular *</label>
-                    <input type="tel" id="telefono" name="telefono" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Correo Electrónico *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="colegio">Institución Educativa de Procedencia *</label>
-                    <input type="text" id="colegio" name="colegio" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="promedio">Promedio de Notas (últimos 2 años) *</label>
-                    <input type="number" id="promedio" name="promedio" min="11" max="20" step="0.1" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="motivacion">¿Por qué quieres estudiar medicina? *</label>
-                    <textarea id="motivacion" name="motivacion" rows="4" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="situacion_economica">Descripción de tu situación económica familiar *</label>
-                    <textarea id="situacion_economica" name="situacion_economica" rows="3" required></textarea>
-                </div>
-                
-                <button type="submit" class="cta-button">Enviar Pre-Inscripción</button>
+                <button type="submit">Programar Cita</button>
+                <p id="msgCita" class="mensaje"></p>
             </form>
-        </div>
-        
-        <div class="contact-info">
-            <h3>📞 Información y Contacto</h3>
-            <div class="contact-item">
-                <span>📍</span>
-                <p>Municipalidad de San Martín de Porres - Oficina de Becas<br>
-                Av. Canta Callao 715, San Martín de Porres</p>
+        </section>
+
+        <!-- Sección: Tienda -->
+        <section id="seccion-equipos" class="section">
+            <h2>Tienda de Equipos Ortopédicos</h2>
+            <div class="equipos-grid">
+                <!-- Plantilla para tus productos -->
+                <div class="equipo-card">
+                    <img src="img/andador.jpg" alt="Andador Ortopédico">
+                    <h3>Andador Ortopédico</h3>
+                    <p>Ideal para pacientes en rehabilitación, resistente y ajustable.</p>
+                    <button>Solicitar información</button>
+                </div>
+                <div class="equipo-card">
+                    <img src="img/silla-ruedas.jpg" alt="Silla de ruedas">
+                    <h3>Silla de Ruedas</h3>
+                    <p>Ligera, plegable y segura para movilidad diaria.</p>
+                    <button>Solicitar información</button>
+                </div>
+                <div class="equipo-card empty-card">
+                    <span>Aquí puedes poner más productos con imagen y descripción.</span>
+                </div>
             </div>
-            <div class="contact-item">
-                <span>📱</span>
-                <p>WhatsApp: +51 987 654 321</p>
-            </div>
-            <div class="contact-item">
-                <span>📞</span>
-                <p>Teléfono: (01) 567-8900</p>
-            </div>
-            <div class="contact-item">
-                <span>✉️</span>
-                <p>Email: becas.medicina@munismp.gob.pe</p>
-            </div>
-            <div class="contact-item">
-                <span>🕒</span>
-                <p>Horario de atención: Lunes a Viernes, 8:00 AM - 4:00 PM</p>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por tu pre-inscripción! Te contactaremos pronto con los próximos pasos. Recuerda que este es solo el primer paso del proceso.');
-        });
-        
-        // Animación suave para los cards
-        const cards = document.querySelectorAll('.card');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        </section>
+    </main>
+
+    <!-- EmailJS Script para enviar la cita médica -->
+    <script type="text/javascript">
+        document.getElementById('formulario-cita').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_tdwp85y', 'template_myhunve', this)
+            .then(function() {
+                document.getElementById('msgCita').textContent =
+                  '¡Correo enviado con éxito! Revisa tu bandeja de entrada o la carpeta de spam.';
+                document.getElementById('msgCita').style.color = 'green';
+                document.getElementById('formulario-cita').reset();
+            }, function(error) {
+                document.getElementById('msgCita').textContent =
+                  'Ocurrió un error al enviar el correo: ' + JSON.stringify(error);
+                document.getElementById('msgCita').style.color = 'red';
             });
         });
-        
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
     </script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
